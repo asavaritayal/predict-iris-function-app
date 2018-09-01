@@ -5,11 +5,10 @@ import os
 
 import numpy as np
 
-
 def main(req: azure.functions.HttpRequest):
 
     # load the model
-    f = open('IrisSample/model.pkl', 'rb')
+    f = open('predictspecies/model.pkl', 'rb')
     model = pickle.load(f)
 
     # gather new sample
@@ -29,5 +28,3 @@ def main(req: azure.functions.HttpRequest):
     pred = model.predict(X_new_with_random_features)
 
     return np.array_str(pred)
-
-    # return 'Hello'
